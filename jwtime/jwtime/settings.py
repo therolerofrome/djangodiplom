@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-aa)ik$a=cjo1o%(#qpvm%w98u50vc26*+)wvdeb02_@z9c6(j5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.localhost', '192.168.0.186', '[::1]']
+#ALLOWED_HOSTS = ['.localhost', '192.168.0.186', '[::1]']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -143,3 +144,12 @@ import datetime
 JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': datetime.timedelta(days=1)
 }
+
+import os
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+import dj_database_url
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
